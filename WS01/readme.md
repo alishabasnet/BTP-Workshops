@@ -444,7 +444,7 @@ Also, add the function `printReport()`; implement it according to the specs from
 *
 * - use the function `seneca::openFile()` to open the file
 * - if the file is successfully open:
-*   - use the function `seneca::readMarks()` to load the content of the file
+*   - use the function `seneca::readAllMarks()` to load the content of the file
 *   - create an array with how many marks are in each interval
 *   - use the function `seneca::printGraph()` to print the *Bar Chart* with the
 *       number of marks in each interval

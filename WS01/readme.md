@@ -448,7 +448,12 @@ Also, add the function `printReport()`; implement it according to the specs from
 *   - create an array with how many marks are in each interval
 *   - use the function `seneca::printGraph()` to print the *Bar Chart* with the
 *       number of marks in each interval
-*   - sort ascending the collection of marks based on the `m_mark` field
+*   - sort the collection of marks in descending order based on the `m_mark` field.
+*       Use a **stable** sorting algorithm like BubbleSort:
+*       https://intro2c.sdds.ca/F-Refinements/algorithms#bubble-sort
+*
+*       See here more info on stability of sorting algorithms:
+*       https://www.geeksforgeeks.org/stable-and-unstable-sorting-algorithms/
 *   - print all the marks in the sorted collection using the format
 *       `## : [MARK] FIRST_NAME LAST_NAME`
 *       (see sample output)

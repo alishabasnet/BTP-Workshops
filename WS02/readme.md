@@ -161,13 +161,13 @@ struct Movie
 
 The title of the movie is held in a dynamically-allocated C-style string; an object of type `Movie` will store the address of this dynamically-allocated string.
 
-Look in the provided files and read the comments; make sure to understand the responsibilities of each function.  Read the provided code and make you understand how it accomplishes the goal.  If you need clarifications, contact your professor.
+Look in the provided files and read the comments; make sure to understand the responsibilities of each function.  Read the provided code and understand how it accomplishes the goal.  If you need clarifications, contact your professor.
 
 
 
 ### `DataHandle` Module (Partially Provided)
 
-This module contains functions that facilitate working with files to read data. Look in the provided files and read the comments; make sure to understand the responsibilities of each function.  Read the provided code and make you understand how it accomplishes the goal.  If you need clarifications, contact your professor.
+This module contains functions that facilitate working with files to read data. Look in the provided files and read the comments; make sure to understand the responsibilities of each function.  Read the provided code and understand how it accomplishes the goal.  If you need clarifications, contact your professor.
 
 
 ### `w2p1` Module (Provided)
@@ -202,8 +202,307 @@ and follow the instructions.
 ## Part 2 (50%)
 
 
-Comming Soon!
+In *Part #2* of the workshop you are to create an application that manages the activity at a hotel. The hotel will have an undetermined number of rooms of different types (*standard rooms*, *family rooms*, and *suites*). The data regarding the rooms available at the hotel will be loaded from a file (`hotel.csv` -- a comma-separated-values type of file; the file is provided.)
+
+Your task is to implement the module `hotel`, that reads the data from the file, stores it in an object of type `Hotel`. A sample output of the application has been provided in the file `sample_output.txt` (generated using the client provided in module `w2_p2`).
+
+This program consists of the following modules:
+- `w2_p2` (already provided, do not change it)
+- `file` (add here any function that works with files). There is no mandatory function from this module that the client requires; add any extra function as you see fit.
+- `hotel` (partially provided, add what's missing -- see below).
+
+
+
+### The `hotel` Module
+
+Add the following custom types to the header of this module:
+
+```cpp
+/// <summary>
+/// A structure that contains information about a single person that stays
+///   at a hotel
+/// </summary>
+struct Guest
+{
+	/// <summary>
+	/// The first name of the person.
+	///   The name must not exceed 100 characters.
+	/// </summary>
+	char m_firstName[101]{};
+	/// <summary>
+	/// The last name of the person.
+	///   The name must not exceed 100 characters.
+	/// </summary>
+	char m_lastName[101]{};
+};
+
+/// <summary>
+/// A structure that contains information about a single room that
+///   guests can rent.
+/// </summary>
+struct Room
+{
+	/// <summary>
+	/// The room number. The first letter of the room number specifies
+	///   in which building the room is located:
+	///   - Building 'A': Standard Rooms (for solo travelers or couples)
+	///   - Building 'B': Family Rooms (rooms for families with kids)
+	///   - Building 'C': Suites (apartment-style with at least 2 bedrooms)
+	/// 
+	/// This attribute stores the address of a dynamically-allocated array
+	///   of characters.
+	/// </summary>
+	char* m_roomNumber = nullptr;
+	/// <summary>
+	/// The MAXIMUM number of guests that can stay in the room at a given
+	///   moment.  This is the capacity of the room.  Large families/parties
+	///   should book large rooms.
+	/// </summary>
+	int m_maxCntGuests = 0;
+	/// <summary>
+	/// The number of guests that currently stay in the room.
+	/// 
+	/// This number cannot exceed `m_maxCntGuests`.
+	/// </summary>
+	int m_cntGuests = 0;
+	/// <summary>
+	/// A collection of `Guest` objects of size `m_cntGuests`.
+	/// 
+	/// This attributes stores the address of a dynamically-allocated
+	///   array of objects of type `Guest`.
+	/// </summary>
+	Guest* m_guests = nullptr;
+};
+
+/// <summary>
+/// A structure that contains information about a single hotel.
+/// </summary>
+struct Hotel
+{
+	/// <summary>
+	/// A collection of rooms of some undetermined size.
+	/// 
+	/// This attribute stores the address of a dynamically-allocated
+	///   array of objects of type `Room`.
+	/// </summary>
+	Room* m_rooms = nullptr;
+	/// <summary>
+	/// The number of rooms in the collection.
+	/// </summary>
+	int m_cntRooms = 0;
+};
+```
+
+Also add the following functions to this module (the protoype in the header, the implementation in the cpp file):
+
+```cpp
+/// <summary>
+/// Sets the first name and last name of a guest.
+/// </summary>
+/// <param name="theGuest">the guest whose name must be set.</param>
+/// <param name="fName">the first name of the guest</param>
+/// <param name="lName">the last name of the guest</param>
+void setGuest(Guest& theGuest, const char* fName, const char* lName)
+{
+	strcpy(theGuest.m_firstName, fName);
+	strcpy(theGuest.m_lastName, lName);
+}
+
+/// <summary>
+/// Load all information about the rooms found in a file and store it in
+///   the `Hotel` object.
+/// </summary>
+/// <param name="fileName">the name of the file containing data.</param>
+/// <param name="theHotel">the object that must be populated with data
+///   extracted from the file.</param>
+/* TODO: add the prototype of the `loadData` function that receives as parameters
+*         the address of a C-string with the file name containing the data, and
+*         a reference to an object of type `Hotel`.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* loadData()
+* - the file contains information about an undetermined number of rooms that a hotel
+*     has. Each line from the file contains information about a single room in the
+*     format:
+* 
+*     `ROOM_NUMBER,ROOM_CAPACITY\n`
+* 
+* - the number of rooms and the number of characters for a single ROOM_NUMBER is not
+*     known, and must be determined at runtime; use dynamic memory to store this info
+*     in your program. Allocate *exactly* the amount of memory necessary and not more.
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+???
+
+/// <summary>
+/// Load from a file the information about a single room.
+/// </summary>
+/// <param name="theRoom">the object where to put data loaded from the file</param>
+/* TODO: add the prototype of the `loadData` function that receives as a parameter
+*         a reference to an object of type `Room`.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* loadData()
+* - load the room number (in a dynamically-allocated string) and the capacity
+*     of the room (as an integer) and store them in the attributes of the parameter.
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+???
+
+/// <summary>
+/// Print to screen the details of the hotel.
+/// </summary>
+/// <param name="theHotel">the hotel whose details are to be printed.</param>
+/* TODO: add the prototype of the `display` function that receives as a parameter
+*         an unmodifiable reference to an object of type `Hotel`.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* display()
+* - print the data stored in the object in the following format:
+*     `Standard Rooms:\n`
+*     `1. DETAILS_OF_FIRST_ROOM_IN_BUILDING_A`
+*     `2. DETAILS_OF_SECOND_ROOM_IN_BUILDING_A`
+*     `3. DETAILS_OF_THIRD_ROOM_IN_BUILDING_A`
+*     `...`
+*     `Family Rooms:\n`
+*     `1. DETAILS_OF_FIRST_ROOM_IN_BUILDING_B`
+*     `2. DETAILS_OF_SECOND_ROOM_IN_BUILDING_B`
+*     `3. DETAILS_OF_THIRD_ROOM_IN_BUILDING_B`
+*     `...`
+*     `Suites:\n`
+*     `1. DETAILS_OF_FIRST_ROOM_IN_BUILDING_C`
+*     `2. DETAILS_OF_SECOND_ROOM_IN_BUILDING_C`
+*     `3. DETAILS_OF_THIRD_ROOM_IN_BUILDING_C`
+*     `...`
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+void display(const Hotel& theHotel);
+
+/// <summary>
+/// Print to screen the details of a single room.
+/// </summary>
+/// <param name="theRoom">the room whose details are to be printed.</param>
+/* TODO: add the prototype of the `display` function that receives as a parameter
+*         an unmodifiable reference to an object of type `Room`.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* display()
+* - if the room has guests, print the data stored formatted as:
+*     `ROOM_NUMBER (NUMBER_OF_GUESTS/MAX_NUMBER_OF_GUESTS): GUEST_1, GUEST_2, ...`
+* - if the room has no guests, print the data stored formatted as:
+*     `ROOM_NUMBER (NUMBER_OF_GUESTS/MAX_NUMBER_OF_GUESTS)`
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+???
+
+/// <summary>
+/// Add a guest to the room ONLY if the room capacity has not been reached.
+///   If the room is already at capacity, this function does nothing.
+/// </summary>
+/// <param name="theRoom">the room where guests will be staying</param>
+/// <param name="theGuest">the gust that wants to stay in the room</param>
+/* TODO: add the prototype of the `addGuest` function that receives as a parameters
+*         a reference to an object of type `Room` and an unmodifiable reference
+*         to an object of type `Guest`.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* addGuest()
+* - resize the array of guests currently staying in the room, but only if there
+*     enough capacity to accommodate the new guest.
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+???
+
+/// <summary>
+/// Searches in the hotel for a room with the number specified in the
+///   second parameter.
+/// </summary>
+/// <param name="theHotel">the hotel where to search for a room.</param>
+/// <param name="roomNumber">the room number being searched.</param>
+/// <returns>the address of the `Room` object with the number specified
+///   in the second parameter, or null if no such room exists.</returns>
+/* TODO: add the prototype of the `findRoom` function that receives as a parameters
+*         an unmodifiable reference to an object of type `Hotel` and the
+*         address of a C-string.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* findRoom()
+* - search in the hotel a room with the specified "Room Number"
+*     (iterate over the collection of rooms).
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+???
+
+/// <summary>
+/// Deallocates all dynamic memory used by a `Hotel` object.
+/// </summary>
+/// <param name="theHotel">the object whose memory must be deallocated.</param>
+/* TODO: add the prototype of the `deallocate` function that receives as a parameter
+*         an unmodifiable reference to an object of type `Room`.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*
+* deallocate()
+* - deallocate all the dynamic memory used by the hotel:
+*   - the room number and the array of guests (for each room)
+*   - the array of rooms
+*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+???
+```
+
+See the provided comments about the responsibility of each function and some hints about how to implement them.  Use the provided sample output to find more about how these functions are supposed to work.
+
+***You may freely use/copy any logic or code needed from the PART 1!***  You can add as many functions, custom types, and variables as your design requires. You must use *function overloading*, *references* and *dynamic memory allocation*.  All the global variables/functions and custom types must be added to `seneca` namespace.
 
 
 
 
+### Reflection
+
+Study your final solutions for each deliverable of the workshop, reread the related parts of the course notes, and make sure that you have understood the concepts covered by this workshop.  **This should take no less than 30 minutes of your time and the result is suggested to be at least 150 words in length.**
+
+Create a **text** file named `reflect.txt` that contains your detailed description of the topics that you have learned in completing this particular workshop and mention any issues that caused you difficulty and how you solved them. Include in your explanation—**but do not limit it to**—the following points:
+
+- In the code from *Part #1*, you were instructed to overload the function `read` multiple times. The reference parameter received by these overloads is called an **out parameter**. Do some research and explain what is an **out parameter** for a function and compare it with an **in parameter**.  In your code, can you identify any function that receives an **in parameter**? Justify your answer.
+
+To avoid deductions, refer to code in your solution as examples to support your explanations.
+
+You may be asked to talk about your reflection (as a presentation) in class.
+
+
+
+### Submission
+
+To test and demonstrate execution of your program use the same data as shown in the sample output.
+
+Upload the source code files to your `matrix` account:
+
+- `w2_p2.cpp`
+- `hotel.h`
+- `hotel.cpp`
+- `file.h`
+- `file.cpp`
+- `hotel.csv`
+- `reflect.txt`
+
+Compile and run your code using the `g++` compiler as shown above and make sure that everything works properly. The professor's tester module has been provided in the repository. A sample run can be found in the file `output_sample.txt`.
+
+```bash
+~profname.proflastname/submit 2??/wX/pY_SSS
+```
+
+- Replace `??` with your subject code (`00` or `44`)
+- Replace `X` with workshop number: [`1` to `10`]
+- Replace `Y` with the part number: [`1` or `2`]
+- Replace `SSS` with the section identifier: [`naa`, `nbb`, `nra`, `zaa`, etc.]
+
+and follow the instructions.
+
+> **⚠️Important:** Please note that a successful submission does not guarantee full credit for this workshop. If the professor is not satisfied with your implementation, your professor may ask you to resubmit. Re-submissions will attract a penalty.

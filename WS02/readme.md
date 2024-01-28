@@ -444,7 +444,7 @@ void display(const Hotel& theHotel);
 /// </summary>
 /// <param name="theHotel">the object whose memory must be deallocated.</param>
 /* TODO: add the prototype of the `deallocate` function that receives as a parameter
-*         an unmodifiable reference to an object of type `Room`.
+*         an unmodifiable reference to an object of type `Hotel`.
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
 * deallocate()

@@ -142,7 +142,7 @@ Use the provided sample output to infer the printing options like: alignment, pr
 
 
 
-### `w2p1` Module (Provided)
+### `w3_p1` Module (Provided)
 
 This is the tester module and is fully provided. Look at it, make sure you understand it, but do not change it.
 
@@ -174,4 +174,97 @@ and follow the instructions.
 ## Part 2 (50%)
 
 
-COMING SOON
+In *Part #2* of the workshop you are to create an application that manages the activity of an ice cream vendor. The vendor can handle one customer at a time; will receive orders from customer with an *undetermined* number ice creams flavors, and will print the order receipt to the screen.
+
+Your task is to implement the modules `IceCream` and `Vendor`. A sample output of the application has been provided in the file `sample_output.txt` (generated using the client provided in module `w3_p2`).
+
+This program consists of the following modules:
+- `w3_p2` (already provided, do not change it)
+- `IceCream` -- contains the definition of a class named `IceCream` that manages information about a **single** ice cream a customer has ordered (i.e., the flavour, the number of scoops, if it should use a vanilla waffer). There is no mandatory function from this module that the client requires; add all the functionality as you see fit for your solution.
+
+    **Hint**: for simplicity, the `IceCream` class is not required to use dynamic memory.
+- `Vendor` -- contains a class that manages a dynamically-allocated array of `IceCream` objects representing the customer order. The array must be resized at runtime as the customer adds more flavours to the order.  See below for public functions that the `Vendor` class must have.
+
+Your program must follow the rules:
+- do not add global variables/functions, unless specifically instructed to do so.  Global constants are acceptable.
+- all attributes in a class must be **private**, unless specifically instructed otherwise.
+- add as many **private** members as your design requires.
+- the client manipulates the data through **public** functions.
+- all member functions should be queries, unless the needs of the project require otherwise.
+- all member functions should be private, unless the needs of the project require otherwise.
+- all public functions must validate their parameters before working with them (don't trust that clients provide good values).
+- all parameters passed by-address or by-reference should be constants, unless the needs of the code require otherwise.
+- all entities you create must be in the `seneca` namespace.
+
+***You may freely use/copy any logic or code needed from the PART 1!***  You must use *custom types*, *public*/*private members*, and *dynamic memory allocation*.
+
+
+### The `Vendor` Module
+
+The class `Vendor` must use dynamic memory to manage the ice cream flavours the customer adds to the order. The class must have the following public functions:
+
+- `startNewOrder()` -- Deallocates any dynamic memory used by the object and sets it to an empty state.
+- `addToOrder()` -- Creates a new `IceCream` object and adds it to the collection of ice cream that the customer ordered **only** if the collection doesn't already contain that flavour and all the parameters are valid.
+
+    If any of the parameters is not valid or the customer already ordered an ice cream with this flavour, this function does nothing.
+    
+    ***Note***: this function must work with dynamic memory and resize the array of ice creams to accommodate the new flavour the customer ordered.
+    
+    Paramaters:
+    - `flavour` -- the address of a C-string containing the flavour of the ice cream the customer ordered. **Valid Value**: any string with at least one character.
+    - `cntScoops` -- an integer with the number of scoops for this ice cream. **Valid Value**: only the value 1, 2, and 3.
+    - `hasVanillaWafer` -- `true` if the ice cream should be in a vanilla wafer; `false` if a plastic cup should be used instead.
+- `displayOrderReceipt` -- Print to screen the receipt for the customer's order, containing the ice creams in the order, the details for each ice cream, and a breakdown of prices.
+
+    At the end print the total amount the customer must pay, including a 13% tax.
+
+    This function should have no side effects (any formatting changes you make to `cout`, should be removed when the function finishes, and the original formatting options restored).
+- `openShop()` -- Initializes the object to a default state (initializes all the attributes to some default value or empty state).
+- `closeShop()` -- Deallocates any dynamic memory used by the object and sets it to an empty state.
+
+
+
+
+
+### Reflection
+
+Study your final solutions for each deliverable of the workshop, reread the related parts of the course notes, and make sure that you have understood the concepts covered by this workshop.  **This should take no less than 30 minutes of your time and the result is suggested to be at least 150 words in length.**
+
+Create a **text** file named `reflect.txt` that contains your detailed description of the topics that you have learned in completing this particular workshop and mention any issues that caused you difficulty and how you solved them. Include in your explanation—**but do not limit it to**—the following points:
+
+- what are the benefits of preventing clients from directly accessing the data members in a class.
+
+To avoid deductions, refer to code in your solution as examples to support your explanations.
+
+You may be asked to talk about your reflection (as a presentation) in class.
+
+
+
+### Submission
+
+To test and demonstrate execution of your program use the same data as shown in the sample output.
+
+Upload the source code files to your `matrix` account:
+
+- `w2_p2.cpp`
+- `hotel.h`
+- `hotel.cpp`
+- `file.h`
+- `file.cpp`
+- `hotel.csv`
+- `reflect.txt`
+
+Compile and run your code using the `g++` compiler as shown above and make sure that everything works properly. The professor's tester module has been provided in the repository. A sample run can be found in the file `output_sample.txt`.
+
+```bash
+~profname.proflastname/submit 2??/wX/pY_SSS
+```
+
+- Replace `??` with your subject code (`00` or `44`)
+- Replace `X` with workshop number: [`1` to `10`]
+- Replace `Y` with the part number: [`1` or `2`]
+- Replace `SSS` with the section identifier: [`naa`, `nbb`, `nra`, `zaa`, etc.]
+
+and follow the instructions.
+
+> **⚠️Important:** Please note that a successful submission does not guarantee full credit for this workshop. If the professor is not satisfied with your implementation, your professor may ask you to resubmit. Re-submissions will attract a penalty.

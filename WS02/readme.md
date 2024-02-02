@@ -1,4 +1,4 @@
-# Workshop #1: Modules
+# Workshop #2: Overloading and Dynamic memory allocation
 
 In this workshop, you will use *references* to modify content of variables in other scopes, overload functions and allocate memory at run-time and deallocate that memory when it is no longer required.
 

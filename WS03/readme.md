@@ -1,4 +1,4 @@
-# Workshop #1: Modules
+# Workshop #3: Member Functions and Privacy
 
 In this workshop, you will create custom types, create member functions to access and modify data store in an object, and print to screen the information in a way that is easy to read.
 

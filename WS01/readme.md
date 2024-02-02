@@ -1,6 +1,6 @@
 # Workshop #1: Modules
 
-In the process of doing your first workshop, in part 1 (**LAB**) section you are to sub-divide a program into modules, compile each module separately and construct an executable from the results of each compilation. In part 2 (**DIY**) you are to write a module to be used throughout the semester based on your knowledge of BTP100 subject
+In the process of doing your first workshop, in part 1 (**LAB**) section you are to sub-divide a program into modules, compile each module separately and construct an executable from the results of each compilation.
 
 
 ## Learning Outcomes
@@ -30,7 +30,10 @@ This workshop is divided into two coding parts and one non-coding part.
 
 ### Due Dates
 
-The due dates depend on your section. Please choose the `-due` option of the submitter program to see the exact due date of your section:
+
+The due dates depend on your section. The due date for *Part #1* is at the end of they when your lab is scheduled; the due date for *Part #2* is at the end of the day that is 5 days after the day with the lab.
+
+Please choose the `-due` option of the submitter program to see the exact due date of your section:
 
 ```bash
 ~profname.proflastname/submit 2??/wX/pY_SSS -due
@@ -157,11 +160,11 @@ The expected output of the program can be found in the file `sample_output.txt` 
 
 It's time to break the program into multiple modules. In the solution explorer, add three new modules to your project:
 
-- `w1p1`: a module to hold the `main()` function.
+- `w1_p1`: a module to hold the `main()` function.
 - `io`: a module to hold the Input/Output related functions.
 - `graph`: a module to hold the functions related to "graph" data entry, processing and creation.
 
-The `w1p1` module has an implementation (`.cpp`) file but no header file. The `io` and `graph` modules have both implementation (`.cpp`) and header (`.h`) files:
+The `w1_p1` module has an implementation (`.cpp`) file but no header file. The `io` and `graph` modules have both implementation (`.cpp`) and header (`.h`) files:
 
 
 
@@ -193,12 +196,12 @@ Additionally, here is an instructional video showing how the compiler works and 
 
 #### C++ Source Files
 
-Add `io.cpp`, `graph.cpp`, and `w1p1.cpp` to the project (right click on project name and select *`Add` » `New Item`* and add a C++ file). In each one of this files, include the corresponding header.
+Add `io.cpp`, `graph.cpp`, and `w1_p1.cpp` to the project (right click on project name and select *`Add` » `New Item`* and add a C++ file). In each one of this files, include the corresponding header.
 
 
 
 
-## Step 3: The `w1p1` Module
+## Step 3: The `w1_p1` Module
 
 At the top of the file, add the following:
 
@@ -262,7 +265,7 @@ Add to each module the following:
 
 #### Windows
 
-To test that you have done this correctly, you can compile each module separately, by right-clicking on `w1p1.cpp`, `io.cpp`, and `graph.cpp` separately (in *Solution Explorer*) and select `Compile` from the menu. If the compilation is successful, most likely you have done it correctly.
+To test that you have done this correctly, you can compile each module separately, by right-clicking on `w1_p1.cpp`, `io.cpp`, and `graph.cpp` separately (in *Solution Explorer*) and select `Compile` from the menu. If the compilation is successful, most likely you have done it correctly.
 
 Now remove `SeneGraph.cpp` from the project. You can do this by right-clicking on the filename in *Solution Explorer* and selecting `Remove` in the menu (make sure you do not delete this file but only remove it).
 
@@ -282,7 +285,7 @@ This example will only compile `File.cpp` (only the first two stages of compilat
 To compile the whole project, use the command:
 
 ```bash
-g++ w1p1.cpp io.cpp graph.cpp -Wall -std=c++11 -o ws
+g++ w1_p1.cpp io.cpp graph.cpp -Wall -std=c++11 -o ws
 ```
 
 Run the program like before and make sure that everything still works properly, and the output matches the expected one. The provided expected output file is generated when the user inputs the following values when prompted:
@@ -304,7 +307,7 @@ Run the program like before and make sure that everything still works properly, 
 
 ### Submission
 
-The professor's testing module is slightly different and can be found in the file `w1p1_prof.cpp`. During this term, the tester will check that you implemented correctly various features; as such it might contain specialized statements or use different input files. Look at the provided tester and ask your professor in class if it contains things that you don't understand.
+The professor's testing module is slightly different and can be found in the file `w1_p1_prof.cpp`. During this term, the tester will check that you implemented correctly various features; as such it might contain specialized statements or use different input files. Look at the provided tester and ask your professor in class if it contains things that you don't understand.
 
 Upload the files listed above to your `matrix` account. Compile and run your code using the `g++` compiler as shown above and make sure that everything works properly.
 
@@ -345,7 +348,7 @@ Look in the provided files `group1.csv`, `group2.csv`, and `group3.csv` for the 
 
 This part of your workshop has the modules:
 
-- `w1p2`: already provided (no change necessary)
+- `w1_p2`: already provided (no change necessary)
 - `file`: already provided (no change necessary)
 - `io`: copy if from *Part 1* (no change necessary)
 - `graph`: copy it from *Part 1* (update the definition of a function; see below)
@@ -465,7 +468,7 @@ Also, add the function `printReport()`; implement it according to the specs from
 bool printReport(const char* filename);
 ```
 
-The `printReport()` function is the only mandatory function in this module (because is used from `w1p2` module). Consider adding to this module other functions as you see necessary to help you complete this part.
+The `printReport()` function is the only mandatory function in this module (because is used from `w1_p2` module). Consider adding to this module other functions as you see necessary to help you complete this part.
 
 
 
@@ -490,7 +493,7 @@ To test and demonstrate execution of your program use the same data as shown in 
 
 Upload the source code files to your `matrix` account:
 
-- `w1p2.cpp`
+- `w1_p2.cpp`
 - `mark.h`
 - `mark.cpp`
 - `file.h`

@@ -5,7 +5,7 @@
 #include "food.h"
 #include "food.h" // intentional
 
-int cout = 0; // won't compile if headers don't follow convention
+int cout = 0; // prevents compilation if headers don't follow convention
 
 int main()
 {

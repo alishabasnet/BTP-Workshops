@@ -127,11 +127,11 @@ This part of the workshop has three modules:
 - `fridge` - represents a fridge (you must fully implement this module in `*.h`/`*.cpp` files)
 - `w4_p1` - which contains the `main()` function (already provided, do not change it)
 
-Your task is to implement the `Fridge` module.
+Your task is to implement the `fridge` module.
 
 
 
-### The `Fridge` Module
+### The `fridge` Module
 
 Design and implement a class named `Fridge` that manages a collection of foods of undetermined size.  The class will not expose the data to clients, validate the parameters before storing them into the attributes.  The client will interract with the object only through the public members (also known as *public interface*, or just *interface*).
 
@@ -156,50 +156,55 @@ Not mandatory, but highly encouraged:
 The class `Fridge` will provide to clients the following public functions:
 
 - a default constructor
-  **Implementation**:
+
+  **🔍Implementation**:
   - set the capacity and number of foods to 0
   - set the pointer attributes to null
 
 
 
 - a custom constructor with two parameters that initializes the current instance with the values of the parameters.
-  **Parameters**:
-  1. `model` - the address of an unmodifiable C-string representing the model of the fridge.
-  2. `capacity` - an object of type `int` representing the capacity of the fridge
 
-  **Implementation**:
+  **📌Parameters**:
+  - `model` - the address of an unmodifiable C-string representing the model of the fridge.
+  - `capacity` - an object of type `int` representing the capacity of the fridge
+
+  **🔍Implementation**:
   - create a temporary empty object of type `Fridge` using the default constructor and copy it in the current instance: `*this = Fridge()`.
   - call the `Fridge::setModel()` to set the model and capacity (the `setModel()` will store the parameters in the current instance only they contain valid data; see below)
 
 
 
 - a custom constructor with four parameters that initializes the current instance with the values of the parameters.
-  **Parameters**:
-  1. `foods` - the address of an unmodifiable array of `Food` objects to be stored in the fridge.
-  2. `cntFoods` - an object of type `int` representing the size of `foods` array received as parameter
-  3. `model` - the address of an unmodifiable C-string representing the model of the fridge.
-  4. `capacity` - an object of type `int` representing the capacity of the fridge
 
-  **Implementation**:
+  **📌Parameters**:
+  - `foods` - the address of an unmodifiable array of `Food` objects to be stored in the fridge.
+  - `cntFoods` - an object of type `int` representing the size of `foods` array received as parameter
+  - `model` - the address of an unmodifiable C-string representing the model of the fridge.
+  - `capacity` - an object of type `int` representing the capacity of the fridge
+
+  **🔍Implementation**:
   - create a temporary empty object of type `Fridge` using the default constructor and copy it in the current instance: `*this = Fridge()`.
   - call the `Fridge::setModel()` to set the model and capacity
   - if the `m_model` is not null (the `Fridge::setModel()` called before accepted the parameters)
     - in a loop, iterate over the array `foods` received as parameter, and add each food to the fridge by calling `Fridge::addFoo()`.
 
 - a destructor that removes any resource used by the current instance
-  **Implementation**:
+
+  **🔍Implementation**:
   - deallocate the dynamic memory used by the current instance
 
 
 
 - `addFood()` - a **modifier** that adds a new `Food` object to the fridge if there is capacity.
-  **Parameters**:
-  1. `aFood` - an unmodifiable reference to an object to type `Food`
+
+  **📌Parameters**:
+  - `aFood` - an unmodifiable reference to an object to type `Food`
   
-  **Return**:
+  **📌Return**:
   - `true` if `aFood` was added to the fridge, `false` otherwise
 
-  **Implementation**:
+  **🔍Implementation**:
   - use `Fridge::getContentWeight()` to get the total weight of all foods from the fridge
   - if the total weight plus the weight of `aFood` is less or equal to the capacity of the fridge, then
     - resize the array of foods `m_food` and add `aFood` at the end
@@ -210,14 +215,15 @@ The class `Fridge` will provide to clients the following public functions:
 
 
 - `setModel()` - a **modifier** that sets the model and capacity of a fridge.
-  **Parameters**:
-  1. `model` - the address of an unmodifiable C-string representing the model of the fridge.
-  2. `capacity` - an object of type `int` representing the capacity of the fridge
 
-  **Return**:
+  **📌Parameters**:
+  - `model` - the address of an unmodifiable C-string representing the model of the fridge.
+  - `capacity` - an object of type `int` representing the capacity of the fridge
+
+  **📌Return**:
   - nothing
 
-  **Implementation**:
+  **🔍Implementation**:
   - if the `model` is not null or empty string, and the `capacity` is at least 10kg
     - deallocate the memory used by the attribute `m_model`
     - allocate new memory, sufficient to accommodate the `model` parameter
@@ -232,13 +238,14 @@ The class `Fridge` will provide to clients the following public functions:
 
 
 - `hasFood()` - a **query** that returns `true` if the fridge contains the food received as parameter, `false` otherwise. If the parameter is null, this query returns `true` if the fridge is not empty.
-  **Parameters**:
-  1. `theFood` - the address of an unmodifiable C-string with the name of the food to be checked. *By default, this parameter is null!*
 
-  **Return**:
+  **📌Parameters**:
+  - `theFood` - the address of an unmodifiable C-string with the name of the food to be checked. *By default, this parameter is null!*
+
+  **📌Return**:
   - `true` if `theFood` was found in the fridge, or the parameter is null and the fridge contains at least one `Food` item; `false` otherwise
 
-  **Implementation**:
+  **🔍Implementation**:
   - if the parameter is null and `m_cntFoods` is more than zero, return `true`
   - else, iterate over the `m_foods` array and compare the name of the food with `theFood` parameter. If a match is found, return `true`
   - if none of the foods' name match the parameter, return `false`
@@ -246,15 +253,20 @@ The class `Fridge` will provide to clients the following public functions:
 
 
 - `display()` - a **query** that inserts into the parameter the content of the current instance
-  **Parameters**:
-  1. `out` - a reference to an object of type `std::ostream`. *By default, this parameter is `std::cout`!*
 
-  **Return**:
+  **📌Parameters**:
+  - `out` - a reference to an object of type `std::ostream`. *By default, this parameter is `std::cout`!*
+
+  **📌Return**:
   - a reference to the object received as parameter
 
-  **Implementation**:
+  **🔍Implementation**:
   - if the `m_model` is null (the object is in an empty state), insert into `out` the message "The fridge object is in an empty state.\n".
-  - else, insert into `out` the content of the object as shown in the sample output. To calculate the fill percentage, use the formula: $$100 \times \frac{TOTAL\_WEIGHT\_OF\_FOODS}{FRIDGE\_CAPACITY}$$
+  - else, insert into `out` the content of the object as shown in the sample output. To calculate the fill percentage, use the formula:
+  
+  ```math
+  100 \times \frac{TotalWeightOfFoods}{FridgeCapacity}
+  ```
 
 
 
@@ -269,7 +281,7 @@ This is the tester module and is fully provided. Look at it, make sure you under
 
 ### Submission
 
-Upload the header files (`*.h`), and source code files (`*.cpp`) to your `matrix` account. Compile and run your code using the `g++` compiler as shown above and test that everything works properly.  Using the provided tester module (`w3_p1.cpp`), a correct implementation will produce the output as shown in `sample_output.txt`.
+Upload the header files (`*.h`), and source code files (`*.cpp`) to your `matrix` account. Compile and run your code using the `g++` compiler as shown above and test that everything works properly.  Using the provided tester module, a correct implementation will produce the output as shown in `sample_output.txt`.
 
 Then, run the following command from your `matrix` account:
 
@@ -291,5 +303,145 @@ and follow the instructions.
 
 ## Part 2 (50%)
 
+This part of the workshop will involve creating a class named `Guitar` that has an undetermined number of `GuitarStrings`.  The class `GuitarString` has been provided.
 
-COMING SOON
+This part of the workshop has three modules:
+
+- `guitarString` - represents a single string of a guitar (already provided, do not change it)
+- `guitar` - represents a guitar (you must fully implement this module in `*.h`/`*.cpp` files)
+- `w4_p2` - which contains the `main()` function (already provided, do not change it)
+
+Your task is to implement the `guitar` module.
+
+
+
+### The `guitar` Module
+
+Design and implement a class named `Gridge` that manages a collection of guitar strings of undetermined size.  The class will not expose the data to clients, validate the parameters before storing them into the attributes.  The client will interract with the object only through the public members (also known as *public interface*, or just *interface*).
+
+
+#### Private Members
+
+The class `Guitar` will store the following information about a guitar:
+
+- `m_model` - a statically allocated C-string with 65 characters
+- `m_strings` - a pointer that stores the address of a dynamically-allocated array of `GuitarString` objects.
+- `m_cntStrings` - as an object of type `int` that stores the number of `GuitarString` objects that are in the array.
+
+#### Public Members
+
+The class `Guitar` will provide to clients the following public functions:
+
+- a custom constructor with one parameters that initializes the current instance with the values of the parameter if the parameter is valid.
+  **📌Parameters**:
+  - `model` - the address of an unmodifiable C-style string. *By default, this parameter has the address of the string "Stratocaster"!*  A valid model is any string with at least one character.
+
+
+
+- a custom constructor with three parameters that initializes the current instance with the values of the parameter if the parameters are valid.
+  **📌Parameters**:
+  - `strings` - the address of an unmodifiable array of `GuitarString` objects
+  - `cntStrings` - the number of `GuitarString` objects in the array
+  - `model` - the address of an unmodiable C-style string. A valid model is any C-string with at least one character.
+
+
+
+- a destructor
+
+
+
+- `reString()` - a **modifier** that removes all the strings from the current object, and replaces them with those received as parameter
+
+  **📌Parameters**:
+  - `strings` - the address of an unmodifiable array of `GuitarString` objects
+  - `cntStrings` - the number of `GuitarString` objects in the array
+
+  **📌Return**:
+  - a reference to an object of type `Guitar`
+
+
+
+- `reString()` - a **modifier** that changes a single string with the one received as parameter
+
+  **📌Parameters**:
+  - `aString` - a reference to an unmodifiable object of type `GuitarString`
+  - `idx` - the index of the `GuitarString` object that must be replaced with the one received as parameter in `aString`
+
+  **📌Return**:
+  - a reference to an object of type `Guitar`
+
+
+
+- `deString()` - a **modifier** that removes all the strings from the current onject
+
+  **📌Return**:
+  - a reference to an object of type `Guitar`
+
+
+
+- `isStrung()` - a **query** that returns `true` if the guitar has at least one string; `false` otherwise
+
+
+
+- `display()` - a **query** that inserts into the parameter the content of the current instance
+
+  **📌Parameters**:
+  - `out` - a reference to an object of type `std::ostream`. *By default, this parameter is `std::cout`!*
+
+  **📌Return**:
+  - a reference to the object received as parameter
+
+  **🔍Implementation**:
+  - if the current instance is in an empty state, insert into parameter *"Empty guitar object!\n"*
+  - else if the current instance has no strings, insert into parameter *"Guitar cannot be used yet because it has no strings.\n"*
+  - else insert into the parameter the content of the current instance as shown in the sample output.
+
+
+
+
+
+
+### The `w4_p2` Module (Provided)
+
+This is the tester module and is fully provided. Look at it, make sure you understand it, but do not change it.
+
+
+
+
+
+### Reflection
+
+Study your final solutions for each deliverable of the workshop, reread the related parts of the course notes, and make sure that you have understood the concepts covered by this workshop.  **This should take no less than 30 minutes of your time and the result is suggested to be at least 150 words in length.**
+
+Create a **text** file named `reflect.txt` that contains your detailed description of the topics that you have learned in completing this particular workshop and mention any issues that caused you difficulty and how you solved them. Include in your explanation—**but do not limit it to**—the following points:
+
+- what are the benefits of providing constructors/destructor in a class.
+
+To avoid deductions, refer to code in your solution as examples to support your explanations.
+
+You may be asked to talk about your reflection (as a presentation) in class.
+
+
+
+### Submission
+
+To test and demonstrate execution of your program use the same data as shown in the sample output.
+
+Upload the header files (`*.h`), and source code files (`*.cpp`) to your `matrix` account. Compile and run your code using the `g++` compiler as shown above and test that everything works properly.  Using the provided tester module, a correct implementation will produce the output as shown in `sample_output.txt`.
+
+```bash
+~profname.proflastname/submit 2??/wX/pY_SSS
+```
+
+- Replace `??` with your subject code (`00` or `44`)
+- Replace `X` with workshop number: [`1` to `10`]
+- Replace `Y` with the part number: [`1` or `2`]
+- Replace `SSS` with the section identifier: [`naa`, `nbb`, `nra`, `zaa`, etc.]
+
+and follow the instructions.
+
+> **⚠️Important:** Please note that a successful submission does not guarantee full credit for this workshop. If the professor is not satisfied with your implementation, your professor may ask you to resubmit. Re-submissions will attract a penalty.
+
+
+
+<!--🔜 COMING SOON-->

@@ -317,7 +317,7 @@ Your task is to implement the `guitar` module.
 
 ### The `guitar` Module
 
-Design and implement a class named `Gridge` that manages a collection of guitar strings of undetermined size.  The class will not expose the data to clients, validate the parameters before storing them into the attributes.  The client will interract with the object only through the public members (also known as *public interface*, or just *interface*).
+Design and implement a class named `Guitar` that manages a collection of guitar strings of undetermined size.  The class will not expose the data to clients, validate the parameters before storing them into the attributes.  The client will interract with the object only through the public members (also known as *public interface*, or just *interface*).
 
 
 #### Private Members

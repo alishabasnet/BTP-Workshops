@@ -119,7 +119,7 @@ To check the output, use a program that can compare text files.  Search online f
 
 ## Part 1 (50%)
 
-In part one of the workshop, you will create a custom type named `BankAccount` that will represents a checking or saving account a person can open at a bank.  This custom type will support some simple operations like adding funds to the account, withdrawing funds, comparing the balance with some number, and conversion to some primitive types.
+In part one of the workshop, you will create a custom type named `BankAccount` that represents a checking or saving account a person can open at a bank.  This custom type will support some simple operations like adding funds to the account, withdrawing funds, comparing the balance with some number, and conversion to some primitive types.
 
 This part of the workshop has three modules:
 
@@ -132,7 +132,7 @@ Your task is to implement the `bankAccount` module.
 
 ### The `bankAccount` Module
 
-Design and implement a class named `BankAccount` that stores some data about an account a person can open at a bank, and allows some simple operations with the account..  The class will not expose the data to clients, validate the parameters before storing them into the attributes.  The client will interract with the object only through the public members (also known as *public interface*, or just *interface*).
+Design and implement a class named `BankAccount` that stores some data about an account a person can open at a bank, and allows some simple operations with the account.  The class will not expose the data to clients, validate the parameters before storing them into the attributes.  The client will interact with the object only through the public members (also known as *public interface*, or just *interface*).
 
 
 #### Private Members
@@ -321,7 +321,194 @@ and follow the instructions.
 
 
 
+
+
 ## Part 2 (50%)
 
+This part of the workshop will involve creating two classes named `Ability` and `Hero` representing a character in a fictional universe with extraordinaries abilities.
 
-🔜 COMING SOON
+This part of the workshop has three modules:
+
+- `ability` - represents a single supernatural ability that a hero can have (you must fully implement this module in `*.h`/`*.cpp` files)
+- `hero` - represents a character with extraordinary abilities that fights evil (you must fully implement this module in `*.h`/`*.cpp` files)
+- `w5_p2` - which contains the `main()` function (already provided, do not change it)
+
+Your task is to implement the `ability`/`hero` modules.
+
+
+
+### The `ability` Module
+
+Design and implement a class named `Ability` that stores information about a single supernatural ability a hero can have. Your class must store at least the name of the ability as a statically allocated C-string with 100 characters, and the strength of the ability as an integer.
+
+The only mandatory function in this class is a custom constructor that receives as parameters the name of the ability and the strength of the ability and stores them into the attributes. You can add any other members to this class as your design requires; make all data-members to be private. **Do not use dynamic memory for this class!**
+
+The client will interact with an object of type `Ability` only through the public members (also known as *public interface*, or just *interface*).
+
+
+
+
+
+### The `hero` Module
+
+Design and implement a class named `Hero` that stores information about a single person that has supernatural abilities.
+
+#### Private Members
+
+The class `Hero` will store the following information about a hero:
+
+- `m_name` - a statically allocated C-string with 100 characters.
+- `m_abilities` - a pointer that stores the address of a dynamically-allocated array of `Ability` objects.  This are the abilities that the hero has and can use when fighting crime.
+- `m_cntAbilities` - as an object of type `int` that stores the number of `Ability` objects that are in the array.
+- `m_level` - as an object of type `int` that stores the level of the hero: the higher the level, the stronger the hero is. This value cannot be less than `1` for a valid hero.
+
+#### Public Members
+
+The class `Hero` will provide to clients the following public functions:
+
+- a default constructor
+
+- a custom constructor with three parameters that initializes the current instance with the values of the parameters if they are valid. The hero will start at level 1.
+  **📌Parameters**:
+  - `name` - the address of an unmodifiable C-style string with the name of the hero.  A valid name is any string with at least one character.
+  - `abilities` - the address of an unmodifiable array of objects of type `Ability`. These are the abilities that the hero has.
+  - `cntAbilities` - the number of objects in the array with abilities received as second parameter.
+
+
+- a destructor
+
+
+- a conversion to `const char*` operator that returns the name of the hero.
+
+
+- a conversion to `int` operator that returns the total strength a hero has.  The total strengh of a hero is the sum the strength of all abilities a hero has, multiplied by the level of the hero.
+
+
+
+- `operator+=` - a **modifier** that adds a new ability to the array of abilities a hero has (resize the array whose address is stored in `m_abilities`)
+
+  **📌Parameters**:
+  - `ability` - an unmodifiable reference to an object of type `Ability`
+
+
+  **📌Return**:
+  - a reference to an object of type `Hero`
+
+
+
+- `operator+=()` - a **modifier** that changes the level of the hero by the value received as parameter.  If the parameter is negative, the new level of the hero cannot go below 1.
+
+  **📌Parameters**:
+  - `lvlChange` - an object of type `int` representing the number of levels to be added to the hero's level.
+
+  **📌Return**:
+  - a reference to an object of type `Hero`
+
+
+
+- `operator++()` - a **modifier** that increases the level of the hero by 1.
+
+  **📌Return**:
+  - a reference to an object of type `Hero`
+
+
+
+- `display()` - a **query** that prints to the screen the content of the current instance in the format:
+
+  ```txt
+  HERO_NAME (lvl: HERO_LEVEL, str: TOTAL_HERO_STRENGTH)
+    - ABILITY_1 (ABILITY_1_STRENGTH)
+    - ABILITY_2 (ABILITY_2_STRENGTH)
+    - ...
+  ```
+
+
+
+
+
+
+#### Free Helpers
+
+Add the following operator overloads as free helpers:
+
+- `operator<` - returns `true` if the strength of the hero received as the first parameter is smaller than the strength of the hero received as the second parameter; `false` otherwise.
+
+  **📌Parameters**:
+  - `h1` - an unmodifiable reference to an object of type `Hero`
+  - `h2` - an unmodifiable reference to an object of type `Hero`
+
+
+
+- `operator>` - returns `true` if the strength of the hero received as the first parameter is greater than the strength of the hero received as the second parameter; `false` otherwise.
+
+  **📌Parameters**:
+  - `h1` - an unmodifiable reference to an object of type `Hero`
+  - `h2` - an unmodifiable reference to an object of type `Hero`
+
+  Notice that both comparison operators above return `false` if the two heroes have equal strength.
+
+
+
+- `operator>>` - adds to the hero received as the second parameter the ability received as the first parameter.
+
+  **📌Parameters**:
+  - `ability` - an unmodifiable reference to an object of type `Ability`
+  - `hero` - a reference to an object of type `Hero`
+
+
+
+- `operator<<` - adds to the hero received as the first parameter the ability received as the second parameter.
+
+  **📌Parameters**:
+  - `hero` - a reference to an object of type `Hero`
+  - `ability` - an unmodifiable reference to an object of type `Ability`
+
+
+
+
+
+
+### The `w5_p2` Module (Provided)
+
+This is the tester module and is fully provided. Look at it, make sure you understand it, but do not change it.
+
+
+
+
+
+### Reflection
+
+Study your final solutions for each deliverable of the workshop, reread the related parts of the course notes, and make sure that you have understood the concepts covered by this workshop.  **This should take no less than 30 minutes of your time and the result is suggested to be at least 150 words in length.**
+
+Create a **text** file named `reflect.txt` that contains your detailed description of the topics that you have learned in completing this particular workshop and mention any issues that caused you difficulty and how you solved them. Include in your explanation—**but do not limit it to**—the following points:
+
+- in part 2, you were asked to overload the comparison operators as free helpers; although these operators are not modifying anything, they are not marked as queries. Explain why we don't make them queries.
+
+To avoid deductions, refer to code in your solution as examples to support your explanations.
+
+You may be asked to talk about your reflection (as a presentation) in class.
+
+
+
+### Submission
+
+To test and demonstrate execution of your program use the same data as shown in the sample output.
+
+Upload the header files (`*.h`), and source code files (`*.cpp`) to your `matrix` account. Compile and run your code using the `g++` compiler as shown above and test that everything works properly.  Using the provided tester module, a correct implementation will produce the output as shown in `sample_output.txt`.
+
+```bash
+~profname.proflastname/submit 2??/wX/pY_SSS
+```
+
+- Replace `??` with your subject code (`00` or `44`)
+- Replace `X` with workshop number: [`1` to `10`]
+- Replace `Y` with the part number: [`1` or `2`]
+- Replace `SSS` with the section identifier: [`naa`, `nbb`, `nra`, `zaa`, etc.]
+
+and follow the instructions.
+
+> **⚠️Important:** Please note that a successful submission does not guarantee full credit for this workshop. If the professor is not satisfied with your implementation, your professor may ask you to resubmit. Re-submissions will attract a penalty.
+
+
+
+<!--🔜 COMING SOON-->

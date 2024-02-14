@@ -152,7 +152,7 @@ The class `BankAccount` will provide to clients the following public functions:
 
     **📌Parameters**:
     - `name` - the address of an unmodifiable C-string representing the account owner. *By default, this parameter is null!*
-    - `checking` - a Boolean value that stores if this account is a checking or savings account.
+    - `checking` - a Boolean value that stores if this account is a checking or savings account. *By default, this parameter is false!*
 
     **🔍Implementation**:
     - set the numeric attributes to 0 and the Boolean attribute to the value of the parameter `checking`.

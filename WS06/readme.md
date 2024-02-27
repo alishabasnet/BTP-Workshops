@@ -125,6 +125,13 @@ This part of the workshop has three modules:
 - `inbox` - represents a collection of emails that a person has received (you must fully implement this module in `*.h`/`*.cpp` files)
 - `w6_p1` - which contains the `main()` function (already provided, do not change it)
 
+The data that will be processed by your application will be loaded from the provided files (`emails_monday.csv` and `emails_misc.csv`). The files are text files in *coma-separated-values* format; each line from the input file contains information about a single email:
+
+  ```txt
+  SENDER_EMAIL_ADDRESS,SENDER_NAME,EMAIL_SUBJECT,RECEIVED_DATE<endl>
+  ```
+
+The `RECEIVED_DATE` field has the format `YYYY-MM-DD HH:MM:SS`.
 
 
 ### The `email` Module
@@ -138,7 +145,7 @@ The class `Email` will store the following information:
 
 - `m_fromName` - as a statically allocated array of 100 characters representing the name of the person who sent the email.
 - `m_fromAddress` - as a statically allocated array of 100 characters representing the email address of the person who sent the email.
-- `m_dateReceived` - as a statically allocated array of 20 characters representing the date when the email has been received. The date will have the format `YYYY-MM-DD HH:MM:SS`.
+- `m_dateReceived` - as a statically allocated array of 20 characters representing the date and time when the email has been received. The date and time field will have the format `YYYY-MM-DD HH:MM:SS`.
 - `m_subject` - as a pointer to a dynamically allocated array of characters that represents the subject of the email. **This is a resource that your code must manage it!**
 
 #### Public Members

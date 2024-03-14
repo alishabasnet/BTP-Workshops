@@ -176,7 +176,7 @@ The class `BankAccount` will provide to clients the following public functions:
 
 - `write()` - a query that inserts into the stream received as parameter the content of the current instance
   **📌Parameters**:
-  - `out` - an unmodifiable reference to an object of type `std::ostream`.
+  - `out` - a reference to an object of type `std::ostream`.
 
   **📌Return**:
   - the parameter
@@ -191,7 +191,7 @@ The class `BankAccount` will provide to clients the following public functions:
 
 - `read()` - a mutator that reads data from the stream received as the first parameter and stores it in the current instance.
   **📌Parameters**:
-  - `in` - an un-modifiable reference to an object of type `std::istream`
+  - `in` - a reference to an object of type `std::istream`
 
   **📌Return**:
   - the parameter
@@ -290,7 +290,7 @@ The class `SavingsAccount` will provide to clients the following public function
 
 - `write()` - a query that inserts into the stream received as parameter the content of the current instance
   **📌Parameters**:
-  - `out` - an unmodifiable reference to an object of type `std::ostream`.
+  - `out` - a reference to an object of type `std::ostream`.
 
   **📌Return**:
   - the parameter
@@ -306,7 +306,7 @@ The class `SavingsAccount` will provide to clients the following public function
 
 - `read()` - a mutator that reads data from the stream received as the first parameter and stores it in the current instance.
   **📌Parameters**:
-  - `in` - an un-modifiable reference to an object of type `std::istream`
+  - `in` - a reference to an object of type `std::istream`
 
   **📌Return**:
   - the parameter

@@ -20,7 +20,7 @@ int main()
 		// get the first token as a C-style array of characters (delimiter is ',')
 		//   - the array is dynamically allocated; after we're done
 		//     with it, we must deallocate it.
-		char* str = seneca::read();
+		char *str = seneca::read();
 		std::cout << "[" << str << "]";
 		delete[] str;
 		str = nullptr;
@@ -30,17 +30,17 @@ int main()
 		seneca::read(iData, '|');
 		std::cout << "[" << iData << "]";
 
-		// get the third token as a double (delimiter is ',')
+		// // get the third token as a double (delimiter is ',')
 		double dData = 0;
 		seneca::read(dData);
 		std::cout << "[" << dData << "]";
 
-		// get the fourth token as a string (delimiter is '!')
+		// // get the fourth token as a string (delimiter is '!')
 		str = seneca::read('!');
 		std::cout << "[" << str << "]";
 		delete[] str;
 
-		// get the last token as a long (delimiter is ',')
+		// // get the last token as a long (delimiter is ',')
 		long lData = 0;
 		seneca::read(lData);
 		std::cout << "[" << lData << "]\n";
@@ -53,7 +53,9 @@ int main()
 		std::cout << "==========:==========:==========:==========:==========\n";
 
 		if (seneca::loadData("penguin.jpg") == false)
+		{
 			std::cout << "[Success] Missing file correctly handled.\n";
+		}
 		else
 		{
 			std::cout << "[Error] missing file incorrectly handled. Exiting ...";
@@ -71,7 +73,7 @@ int main()
 		if (seneca::loadData("movies.csv") == false)
 		{
 			std::cout << "[Error] The file 'movies.csv' should be good; check if"
-				"        your code contains the file in the project's folder.\n";
+						 "        your code contains the file in the project's folder.\n";
 			return ERROR_CORRECT_FILE;
 		}
 		else

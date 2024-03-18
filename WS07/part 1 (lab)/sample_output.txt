@@ -14,13 +14,7 @@ John Evans
 ------------------------------
 [#2] Bank Account (I/O)
 -----------------------
-Name: John Evans
-Opening Balance: 100.25
-Date Opened (year-month-day): 2022-12-6
-Transit #: 01234
-Institution #: 002
-Account #: 0012345
->> John Evans | $100.25 | 2022-12-06 | 01234,002,0012345
+Name: Opening Balance: Date Opened (year-month-day): Transit #: Institution #: Account #: >> John Evans | $100.25 | 2022-12-06 | 01234,002,0012345
 
 [#3] Savings Account (Constructors)
 -----------------------------------
@@ -41,15 +35,7 @@ Olivia Wright
 ------------------------------
 [#4] Savings Account (I/O)
 --------------------------
-Name: Olivia Wright
-Opening Balance: 555.55
-Date Opened (year-month-day): 2023-2-10
-Transit #: 54321
-Institution #: 003
-Account #: 1122334
-Interest Date (year-month-day): 2023-3-1
-Interest Rate: 0.047
->> Olivia Wright | $555.55 | 2023-02-10 | 54321,003,1122334 | 0.047% | 2023-03-01
+Name: Opening Balance: Date Opened (year-month-day): Transit #: Institution #: Account #: Interest Date (year-month-day): Interest Rate: >> Olivia Wright | $555.55 | 2023-02-10 | 54321,003,1122334 | 0.047% | 2023-03-01
    $555.55 + $26.11 (0.047%) = $581.66 | 2023-03-01 => 2015-02-10
    $581.66 + $27.34 (0.047%) = $609.00 | 2015-02-10 => 2015-03-10
 >> Olivia Wright | $609.00 | 2023-02-10 | 54321,003,1122334 | 0.047% | 2015-03-10

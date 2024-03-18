@@ -50,7 +50,7 @@ T4: Testing the other += operator (add abilities).
 Martian-Man-Hunter (lvl: 3, str: 39)
   - Telepathy (9)
   - Flying (2)
-  - Super strength (2) 
+  - Super strength (2)
 Martian-Man-Hunter (lvl: 3, str: 69)
   - Telepathy (9)
   - Flying (2)

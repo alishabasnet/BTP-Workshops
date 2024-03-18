@@ -33,7 +33,7 @@ int main()
 		seneca::Hero( "Green Lantern",      &abilities[9], 1 ),
 	};
 
-	// Test 1
+	// // Test 1
 	std::cout << "T1: Testing the display function and constructors.\n";
 	std::cout << "==========:==========:==========:==========:==========\n";
 	for (int i = 0; i < 5; ++i)
@@ -58,7 +58,7 @@ int main()
 	std::cout << "~~~~~~~~~~:~~~~~~~~~~:~~~~~~~~~~:~~~~~~~~~~:~~~~~~~~~~\n\n";
 
 
-	// Test 3
+	// // Test 3
 	std::cout << "T3: Testing the operator+= with negative parameters.\n";
 	std::cout << "==========:==========:==========:==========:==========\n";
 	heroes[4] += -2;

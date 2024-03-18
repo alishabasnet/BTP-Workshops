@@ -1,0 +1,14 @@
+This workshop teaches about classes and objects. Unlike previous workshop,
+where we defined `struct` to structure our datatype, this workshop lightened
+about the classes and objects and how data members and methods can be grouped
+together to create a separate isolated object. Along with this, I was able to
+learn and work with standard formattings on c++ like setting width, precision
+and fill too. Similar to previous tasks, this also included dynamic memory all-
+ocation and freeing memory. But one different thing was in class, we could use its
+destructor function `~ClassName()` to free memory related to the object of that class,
+which gives better way to de-allocate it.
+On checking with valgrind, I was getting memory leakage ( 62 bytes ), and tried so hard
+to fix it. At last i got to know about the destructor function from internet, and i was able
+to solve my problem. The link to the reference is also listed below:
+
+https://www.geeksforgeeks.org/destructors-c/

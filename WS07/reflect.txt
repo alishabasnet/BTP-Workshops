@@ -1,0 +1,19 @@
+In this workshop, i was known about inheritance and custom i/o operations.
+At first, talking about inheritance, it allow me to use a base class to make an another
+class, that has similar behavior. In this workshop, i was more clear about class access
+modifiers.
+e.g:
+public keyword allow data member/function to use outside of class,
+private keyword allow data member/function to use outside of class,
+and, protected plays a great role in derived classes, as it allows members/functions
+to access within or the child class, but not outside.
+Also, i was familiar with calling constructor of base class from inside child class for
+property initialization.
+
+Apart of this, the functions inside DepositUtility.cpp showed me a cleaner approach to
+custom I/O operators. For eg: the Date class overloads the `<<` and `>>` operator to read
+and write data. Without overloading these operator, we can't use `cin` or `cout` with the objects
+of this class.
+e.g: suppose date as an object Date date = Date(2023, 11, 11);
+if these two operators are not overloaded, then using cin >> date; or cout << date; would throw
+error.

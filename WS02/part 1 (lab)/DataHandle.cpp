@@ -1,19 +1,25 @@
+/// 
+
+
+
 // This prevents VS compiler from issuing warnings/errors related to utilization
 //   of unsafe string functions.  Has no effect in g++.
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 #include <cstdlib>
+#include "DataHandle.h"
 // TODO: include any other header that is necessary for your solution
 
 using namespace std;
 
-// TODO: put everything in the `seneca` namespace
+namespace seneca
+{
 
 	/// <summary>
 	/// The file descriptor; will be set when a file is open with
 	///   `openFile`, and reset when the file is closed with `closeFile`.
 	/// </summary>
-	FILE* g_fptr;
+	FILE *g_fptr;
 
 	bool openFile(const char filename[])
 	{
@@ -37,30 +43,120 @@ using namespace std;
 
 	int getRecordsCount()
 	{
-		int noOfRecs = -1;
+		// if no file is opened,return -1
+		if (g_fptr == nullptr)
+			return -1;
 
+		int numRecords = 0;
+		// else start counting lines
 		if (g_fptr != nullptr)
 		{
-			// get current position in the file.
-			auto currentPosition = std::ftell(g_fptr);
+			// Get current position in the file
+			auto currentPosition = ftell(g_fptr);
 
-			// go to the begining of the file
-			std::fseek(g_fptr, 0, SEEK_SET);
+			// Go to the beginning of the file
+			fseek(g_fptr, 0, SEEK_SET);
 
-			// start counting from "0"
-			noOfRecs = 0;
+			// Read line by line and count the lines
+			char line[256];
+			while (fgets(line, sizeof(line), g_fptr) != nullptr)
+				++numRecords;
 
-			// read from file a character at a time, and count '\n'
-			char ch{};
-			while (fscanf(g_fptr, "%c", &ch) == 1)
-			{
-				noOfRecs += (ch == '\n');
-			}
-
-			// done counting, reposition the cursor to the original location
-			std::fseek(g_fptr, currentPosition, SEEK_SET);
+			// Reposition the cursor to the original location
+			fseek(g_fptr, currentPosition, SEEK_SET);
 		}
-		return noOfRecs;
+
+		return numRecords;
 	}
 
-// TODO: define below all the functions from this module
+	char *read(char delim)
+	{
+		long position = ftell(g_fptr);
+		int counter = 0;
+		char ch;
+
+		// Count the number of characters until the delimiter or end of file
+		while (fscanf(g_fptr, "%c", &ch) == 1 && ch != delim)
+		{
+			++counter;
+		}
+
+		// Reposition the cursor to the beginning of the token
+		fseek(g_fptr, position, SEEK_SET);
+
+		// Allocate memory for the token
+		char *token = new char[counter + 1];
+
+		// Read the token into the allocated memory
+		for (int i = 0; i < counter; ++i)
+		{
+			fscanf(g_fptr, "%c", &token[i]);
+		}
+
+		// Null-terminate the string
+		token[counter] = '\0';
+
+		// Move the file cursor past the delimiter
+		if (ch == delim)
+		{
+			fscanf(g_fptr, "%*c");
+		}
+
+		return token;
+	}
+
+	bool read(int &val, char delim)
+	{
+		char *token = read(delim);
+
+		if (token != nullptr)
+		{
+			// Convert the array of characters to an integer
+			val = atoi(token);
+
+			// Deallocate the memory used by the array
+			delete[] token;
+
+			return true;
+		}
+
+		return false;
+	}
+
+	bool read(long &val, char delim)
+	{
+		char *token = read(delim);
+
+		if (token != nullptr)
+		{
+			// Convert the array of characters to a long
+			val = atol(token);
+
+			// Deallocate the memory used by the array
+			delete[] token;
+
+			return true;
+		}
+
+		return false;
+	}
+
+	bool read(double &val, char delim)
+	{
+		char *token = read(delim);
+
+		if (token != nullptr)
+		{
+			// Convert the array of characters to a double
+			val = atof(token);
+
+			// Deallocate the memory used by the array
+			delete[] token;
+
+			return true;
+		}
+
+		return false;
+	}
+
+} // namespace seneca

@@ -1,0 +1,29 @@
+This workshop was full of researches for me. At first I was learning
+about operator overloading. In c++, we could overload operators, for eg:
+overloading an operator `+` to add two objects of class.
+
+for eg: 
+BankAccount BankAccount::operator+(double amount) const
+{
+    BankAccount result(*this);
+    result += amount;
+    return result;
+}
+
+This allow objects of BankAccout class to be added.
+
+And during this period of time, i was learning some operators like explicit, friend, and 
+a function static_cast.
+
+`explicit` operator allows us to prevent unwanted implicit type conversions,
+`friend` operator allow the public function of a class. In my code, i needed to use this
+to overload `<<` and `>>` operators to access private properties of Hero and Ability class.
+
+Similarly, i find a function `static_cast` used in:
+bool operator<(const Hero &h1, const Hero &h2)
+{
+    return static_cast<int>(h1) < static_cast<int>(h2);
+}, it basically casts datatype to another, using following format: static_cast <dest_type> (source);
+
+Overall, this workshop was a great opportunity to learn about operator overloading and some topics
+related to this.

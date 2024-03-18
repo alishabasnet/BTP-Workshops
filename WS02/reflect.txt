@@ -1,0 +1,38 @@
+This workshop teaches about dynamic memory allocation  and
+how to prevent memory leakage issue by using technique of
+de-allocation. In both of the parts, I learned how to load
+data from the file and then assign the data dynamically into
+program variables to use the exact amount of memory required
+by data. This includes defining pointers ( file pointers and 
+character pointers for string), using pointer locations for 
+structs and then de-allocate them ( in this workshop, using 
+`delete` operator ). I also learnt surfacely to trace memory 
+leak or memory crashes using a powerful tool `valgrind`.
+One challenge I encountered was ensuring proper memory deallocation
+in the deallocate function. It required iterating through the array of
+rooms ( in 2nd part )/movies ( in first part) and deallocating memory
+for each dynamically allocated attributes.
+
+Another key concept was `function overloading`. In both of the
+tasks, I had to create functions which have same name, but the 
+parameters were different.
+
+
+*** in parameters and out parameters ***
+Accordint to my research, An out parameter in a function is a reference 
+parameter used to return one or more values from the function. As far as I understand,
+the return value and out parameters are similar but are not exactly same.
+For example, in workshop part 1, there's a function:
+`bool openFile(const char filename[])`, the boolean is the return value but not out parameter,
+because this returned boolean is only used in one place, but lets take reference to 
+`void setGuest(Guest &theGuest, const char *fName, const char *lName)`, it doesn't actually return
+anything but the modified `theGuest` can be used anywhere after the function called. This is the 
+out parameter.
+
+
+*** things to mention ***
+while doing the part 2, i ran into the situation where i need to take
+help from internet. I was unable to copy the memory to memory using std::copy,
+and after taking help from internet i got to know about std::memcpy
+from https://en.cppreference.com/w/cpp/string/byte/memcpy, whose signature is:
+void* memcpy( void* dest, const void* src, std::size_t count );

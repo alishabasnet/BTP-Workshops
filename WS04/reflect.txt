@@ -1,0 +1,21 @@
+This workshop tauhgt me aboutthe constructor and destructor and that even those could be overloaded.
+This was also focused on using access limiter using public and private members. But the difference was
+this workshop shows better way to manage members of the class. It taught that its better to make all
+data members private and use public functions to access the required members. This way if we need those,
+we can use the member data, but can't update from outside, making it secure.
+
+The main difference from other workshop was, previously i used a separate function `deAllocate()` where I
+loop through every dynamically allocated value. But after using destructor function `~ClassName()`, so 
+dynamically allocated memory on an instance of object automatically gets deallocated when that object
+destroys. This make it more effective to manage memory allocation as allocation and deallocation logic
+lies within a same scope.
+
+For example, I'm using this code snippit to explain my thought.
+Guitar::~Guitar()
+{
+  delete[] m_strings;
+}
+
+m_strings is a pointer to GuitarString object, i.e: dynamically allocated array of strings, and using this
+destructor function, when the object of `Guitar` class destroys, it automatically deallocate the amount of 
+memory space used by m_strings within that object.

@@ -100,7 +100,7 @@ int main()
 		seneca::addGuest(*(seneca::findRoom(aHotel, "A12")), travellers[0]);
 		seneca::addGuest(*(seneca::findRoom(aHotel, "B1002")), travellers[1]);
 		seneca::addGuest(*(seneca::findRoom(aHotel, "B1002")), travellers[2]);
-		seneca::addGuest(*(seneca::findRoom(aHotel, "B1002")), travellers[9]);
+		s~eneca::addGuest(*(seneca::findRoom(aHotel, "B1002")), travellers[9]);
 		seneca::addGuest(*(seneca::findRoom(aHotel, "B1002")), travellers[10]);
 
 		seneca::addGuest(*(seneca::findRoom(aHotel, "C202")), travellers[11]);

@@ -1,4 +1,4 @@
-# Workshop #2: Overloading and Dynamic memory allocation
+# Workshop #1: Modules
 
 In this workshop, you will use *references* to modify content of variables in other scopes, overload functions and allocate memory at run-time and deallocate that memory when it is no longer required.
 
@@ -444,7 +444,7 @@ void display(const Hotel& theHotel);
 /// </summary>
 /// <param name="theHotel">the object whose memory must be deallocated.</param>
 /* TODO: add the prototype of the `deallocate` function that receives as a parameter
-*         an unmodifiable reference to an object of type `Hotel`.
+*         an unmodifiable reference to an object of type `Room`.
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 *
 * deallocate()

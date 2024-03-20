@@ -1,0 +1,21 @@
+In Workshop 8, we focused into the implementation of virtual functions and abstract base classes in C++. The workshop
+primarily focused on creating an inheritance hierarchy for bank accounts, including the design of abstract interfaces
+and concrete classes to manage different types of accounts. The concepts that I were introduced from this workshop are:
+
+a) Abstract Base Classes: These are like templates that define what functions a class should have, but don't provide
+    implementations for them.
+
+b) Virtual Functions: These are special functions that can be overridden by subclasses. For example, a savings account
+    and a checking account may both have a "calculate interest" function, but they will do it differently.
+    Virtual functions allow us to handle this flexibility.
+
+c) Inheritance Hierarchy: We learned how to organize different types of bank accounts into a hierarchy. This helps us
+    managethem more efficiently and write cleaner code.
+
+d) Dynamic Memory Allocation: This is a fancy way of saying "creating objects as we need them." We also learned to clean
+    up after ourselves to avoid memory leaks.
+
+
+
+At first, it was a bit confusing to understand why we need functions that don't do anything while creating abstract classes,
+    but as I worked through examples and practiced, I realized their importance in creating flexible and reusable code.

@@ -1,0 +1,18 @@
+In this workshop, I learned about creating new classes that are connected to each other, where
+one class can inherit features from another class. This concept is called inheritance, and it
+allows us to reuse code and extend functionality. Specifically, we explored derived classes,
+which are classes that inherit properties and behaviors from a base class. In our case,
+we created a derived class called Book, which inherited from a base class named LibraryItem.
+
+e.g: First, we made a class called LibraryItem to represent items in a library, like books.
+Then, we created another class called Book that was based on LibraryItem but had extra features,
+like the author's name.
+
+Another thing I learned was how to fix warnings that could cause problems in the code.
+For example, I learned to include a special kind of function called a "virtual destructor"
+to ensure that objects are deleted correctly without causing issues.
+
+Apart of that, I gained more insights into implementing the rule of three (copy constructor,
+copy assignment operator, and destructor) to ensure proper memory management, especially when
+dealing with dynamically allocated resources.
+

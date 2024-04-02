@@ -2,6 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include <cstring>
 #include "Student.h"
 #include "Book.h"

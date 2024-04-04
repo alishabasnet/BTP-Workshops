@@ -1,0 +1,50 @@
+During the completion of this workshop, I learned several important concepts related to
+templates, and generic programming in C++. The main focus was on implementing templated
+data structures and functions to manipulate collections of different types of objects.
+
+One of the key concepts I learned was to create template structs and functions.
+For example, in the MatchPair.h module, I implemented a templated struct called Pair,
+which represents a pair of elements of different types. This struct is then used in the
+matches function to store pairs of matching elements from two arrays of different types.
+
+i.e: template <typename T, typename U>
+struct Pair {
+    T first;
+    U second;
+};
+
+I also implemented a function template called matches that finds pairs of matching elements
+in two arrays and returns an array of pairs. One special thing about this function is that,
+the first and second argument of this function is a dynamic type array. i.e:
+
+template <typename T, typename U>
+Pair<T, U>* matches(const T* arr1, const U* arr2, int size1, int size2, int& size3) {
+    // rest implementation...
+}
+
+This function demonstrates the power of templates in enabling generic programming,
+as it can work with arrays of any data type that supports comparison ( because the 
+implementation uses `==` operator to compare values ).
+
+
+Similarly, for memory management, i.e: dellocation of dynamic memory, same concept of generic
+was used.
+
+template <typename T>
+void releaseMem(T *arr)
+{
+    delete[] arr;
+}
+
+This justifies the power and flexibility one can get using template functions/struct allowing
+generic types.
+
+Overall, completing this workshop enhanced my understanding of templates and generic programming in C++,
+I feel a bit confident in my ability to work with templated data structures and functions, and I look
+forward to applying these concepts in future projects.
+
+
+
+
+
+
